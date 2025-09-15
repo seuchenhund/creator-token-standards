@@ -2,11 +2,11 @@
 pragma solidity 0.8.24;
 
 import "forge-std/Script.sol";
-import "src/RoninShard.sol";
+import "src/BRon.sol";
 
 contract SetRolesRoninShard is Script {
     function run() external {
-        address shardAddress = 0xD6E9fce9fA9620A1Dc53f4d6Ff92686B916694DD;
+        address tokenAddress = 0xD6E9fce9fA9620A1Dc53f4d6Ff92686B916694DD;
         address targetMinter = 0x6b04e3C91B4A141B4F1123E71fDcf3BA7b5A088a;
         address targetBurner = 0x6b04e3C91B4A141B4F1123E71fDcf3BA7b5A088a;
 
@@ -14,10 +14,10 @@ contract SetRolesRoninShard is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        RoninShard shard = RoninShard(shardAddress);
+        BRon token = BRon(tokenAddress);
 
-        shard.grantRole(shard.MINTER_ROLE(), targetMinter);
-        shard.grantRole(shard.BURNER_ROLE(), targetBurner);
+        token.grantRole(token.MINTER_ROLE(), targetMinter);
+        token.grantRole(token.BURNER_ROLE(), targetBurner);
 
         vm.stopBroadcast();
 

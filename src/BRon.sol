@@ -4,7 +4,7 @@ pragma solidity 0.8.24;
 import "src/access/OwnableBasic.sol";
 import "src/erc20c/ERC20CA.sol";
 
-contract RoninShard is OwnableBasic, ERC20CA {
+contract BRon is OwnableBasic, ERC20CA {
 
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
@@ -19,12 +19,12 @@ contract RoninShard is OwnableBasic, ERC20CA {
     }
 
     function mint(address to, uint256 amount) public {
-        require(hasRole(MINTER_ROLE, msg.sender), "RoninShard: must have minter role to mint");
+        require(hasRole(MINTER_ROLE, msg.sender), "Revert: must have minter role to mint");
         _mint(to, amount);
     }
 
     function burn(address from, uint256 amount) public {
-        require(hasRole(BURNER_ROLE, msg.sender), "RoninShard: must have burner role to burn");
+        require(hasRole(BURNER_ROLE, msg.sender), "Revert: must have burner role to burn");
         _burn(from, amount);
     }
 

@@ -2,7 +2,7 @@
 pragma solidity 0.8.24;
 
 import "forge-std/Script.sol";
-import "src/RoninShard.sol";
+import "src/BRon.sol";
 
 interface ICreatorTokenTransferValidator {
     function createList(string calldata name) external returns (uint48 id);
@@ -14,13 +14,13 @@ interface ICreatorTokenTransferValidator {
         uint8 globalOptions,
         uint16 rulesetOptions
     ) external;
-    function addAccountsToList(uint48,uint8,address[])
+    function addAccountsToList(uint48,uint8,address[] calldata) external;
 }
 
 contract CreateAndApplyRuleset is Script {
     function run() external {
         address validator = 0x721C008fdff27BF06E7E123956E2Fe03B63342e3;
-        address shardAddress = 0xD6E9fce9fA9620A1Dc53f4d6Ff92686B916694DD;
+        address tokenAddress = 0xD6E9fce9fA9620A1Dc53f4d6Ff92686B916694DD;
 
         uint8 rulesetId = 4;
         address customRuleset = address(0);
@@ -31,14 +31,14 @@ contract CreateAndApplyRuleset is Script {
 
         vm.startBroadcast(privateKey);
 
-        RoninShard shard = RoninShard(shardAddress);
-        shard.setTransferValidator(validator);
+        BRon token = BRon(tokenAddress);
+        token.setTransferValidator(validator);
 
         ICreatorTokenTransferValidator validatorContract = ICreatorTokenTransferValidator(validator);
 
         // Step 1: Create whitelist list
         /*
-        uint48 listId = validatorContract.createList("RoninShard List");
+        uint48 listId = validatorContract.createList("BRon List");
         console2.log("Created whitelist with ID:", listId);
 
         address[] memory whitelist = new address[](1);
@@ -46,19 +46,19 @@ contract CreateAndApplyRuleset is Script {
         validatorContract.addAccountsToList(listId, 1, whitelist);
 
         // Step 2: Apply list to collection
-        validatorContract.applyListToCollection(shardAddress, listId);
-        console2.log("Applied list to collection:", shardAddress);
+        validatorContract.applyListToCollection(tokenAddress, listId);
+        console2.log("Applied list to collection:", tokenAddress);
         */
 
         // Step 3: Set ruleset
         validatorContract.setRulesetOfCollection(
-            shardAddress,
+            tokenAddress,
             rulesetId,
             customRuleset,
             globalOptions,
             rulesetOptions
         );
-        console2.log("Applied ruleset to collection:", shardAddress);
+        console2.log("Applied ruleset to collection:", tokenAddress);
 
         vm.stopBroadcast();
     }
