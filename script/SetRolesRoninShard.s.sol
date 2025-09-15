@@ -6,7 +6,7 @@ import "src/BRon.sol";
 
 contract SetRolesRoninShard is Script {
     function run() external {
-        address tokenAddress = 0xD6E9fce9fA9620A1Dc53f4d6Ff92686B916694DD;
+        address tokenAddress = vm.envAddress("TOKEN_ADDRESS");
         address targetMinter = 0x6b04e3C91B4A141B4F1123E71fDcf3BA7b5A088a;
         address targetBurner = 0x6b04e3C91B4A141B4F1123E71fDcf3BA7b5A088a;
 

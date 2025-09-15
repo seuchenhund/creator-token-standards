@@ -7,7 +7,7 @@ import "../src/BRon.sol";
 
 contract DeployClaimRedeemNFT is Script {
     function run() external {
-        address tokenAddress = 0xD6E9fce9fA9620A1Dc53f4d6Ff92686B916694DD;
+        address tokenAddress = vm.envAddress("TOKEN_ADDRESS");
         uint256 privateKey = vm.envUint("PRIVATE_KEY");
 
         vm.startBroadcast(privateKey);

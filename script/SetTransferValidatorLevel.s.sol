@@ -20,7 +20,7 @@ interface ICreatorTokenTransferValidator {
 contract CreateAndApplyRuleset is Script {
     function run() external {
         address validator = 0x721C008fdff27BF06E7E123956E2Fe03B63342e3;
-        address tokenAddress = 0xD6E9fce9fA9620A1Dc53f4d6Ff92686B916694DD;
+        address tokenAddress = vm.envAddress("TOKEN_ADDRESS");
 
         uint8 rulesetId = 4;
         address customRuleset = address(0);
