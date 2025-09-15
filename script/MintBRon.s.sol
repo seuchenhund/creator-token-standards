@@ -7,7 +7,7 @@ import "src/BRon.sol";
 contract MintBRon is Script {
     function run() external {
         address tokenAddress = vm.envAddress("TOKEN_ADDRESS");
-        address recipient = 0x7d1Ab76DFd343cA0354b6bdbe9E38871BcbDFab3;
+        address recipient = 0xC583614De340462b9aC134d3d1eC06DFc4B6c6F6;
 
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
 

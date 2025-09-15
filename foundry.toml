@@ -11,6 +11,10 @@ evm_version = "cancun"
 optimizer = true
 optimizer_runs = 777
 
+# Generate Sourcify metadata for verification
+metadata = true
+metadata_hash = "ipfs"
+
 [fuzz]
 runs = 256
 max_test_rejects = 10240000

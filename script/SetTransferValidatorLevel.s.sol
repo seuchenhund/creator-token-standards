@@ -37,18 +37,16 @@ contract CreateAndApplyRuleset is Script {
         ICreatorTokenTransferValidator validatorContract = ICreatorTokenTransferValidator(validator);
 
         // Step 1: Create whitelist list
-        /*
         uint48 listId = validatorContract.createList("BRon List");
         console2.log("Created whitelist with ID:", listId);
 
         address[] memory whitelist = new address[](1);
-        whitelist[0] = 0x0101010210;
+        whitelist[0] = 0xC583614De340462b9aC134d3d1eC06DFc4B6c6F6;
         validatorContract.addAccountsToList(listId, 1, whitelist);
 
         // Step 2: Apply list to collection
         validatorContract.applyListToCollection(tokenAddress, listId);
         console2.log("Applied list to collection:", tokenAddress);
-        */
 
         // Step 3: Set ruleset
         validatorContract.setRulesetOfCollection(
