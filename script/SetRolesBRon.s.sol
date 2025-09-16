@@ -4,7 +4,7 @@ pragma solidity 0.8.24;
 import "forge-std/Script.sol";
 import "src/BRon.sol";
 
-contract SetRolesRoninShard is Script {
+contract SetRolesBRon is Script {
     function run() external {
         address tokenAddress = vm.envAddress("TOKEN_ADDRESS");
         address targetMinter = 0x6b04e3C91B4A141B4F1123E71fDcf3BA7b5A088a;
