@@ -14,7 +14,6 @@ contract BRon is OwnableBasic, ERC20CA {
         _setupRole(MINTER_ROLE, msg.sender);
         _setupRole(BURNER_ROLE, msg.sender);
 
-        _emitDefaultTransferValidator();
         _registerTokenType(getTransferValidator());
     }
 
